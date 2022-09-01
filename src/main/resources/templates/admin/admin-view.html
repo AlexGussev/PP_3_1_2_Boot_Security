@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Security Example</title>
+</head>
+<body>
+<h2>Панель Администратора</h2>
+<div>
+    <h3>Пользователи</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Возвраст</th>
+            <th scope="col">Email</th>
+            <th scope="col">Фамиллия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Роль</th>
+            <th scope="col">Операция</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="allUser : ${allUser}">
+            <td th:text="${allUser.id}"/>
+            <td th:text="${allUser.age}"/>
+            <td th:text="${allUser.email}"/>
+            <td th:text="${allUser.lastName}"/>
+            <td th:text="${allUser.name}"/>
+            <td th:text="${allUser.roles}"/>
+            <td>
+                <a th:href="@{/edit?id={id}(id=${allUser.getId()})}" th:text="Обновить">Обновить</a> <a th:href="@{/delite?id={id}(id=${allUser.getId()})}" th:text="Удалить">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <input type="button" th:value="Добавить" onclick="window.location.href= '/admin/addNewUser'">
+    <br>
+    <br>
+    <input type="button" th:value="Выйти" onclick="window.location.href= '/logout'">
+</div>
+</body>
+</html>
