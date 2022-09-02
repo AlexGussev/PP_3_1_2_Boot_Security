@@ -37,21 +37,22 @@
     <input type="text" th:field="*{password}" id="password"/>
     <br/>
     <br/>
-    <label for="allRoles">Роль</label>
+
+    <label for="allRoles">Roles (multiple select):</label>
     <br/>
-        <select id="allRoles" name="allRoles" size="2" multiple = "multiple">
-            <option th:each="role : ${allRoles}"
-                    th:value="${role.name}"
-                    th:text="${role.name}">Role name</option>
-        </select>
+    <select id="allRoles" name="allRoles" size="2" multiple="multiple">
+        <option th:each="role : ${allRoles}"
+                th:value="${role.name}"
+                th:text="${role.name}"></option>
+
+    </select>
     <input type="submit" value="Сохранить"/>
 </form>
 <br>
 <br/>
+
 <form th:action="@{/logout}" method="post">
     <button type="submit">Выйти</button>
 </form>
-
-
 </body>
 </html>

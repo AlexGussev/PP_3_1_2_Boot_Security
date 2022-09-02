@@ -29,7 +29,7 @@
             <td th:text="${allUser.name}"/>
             <td th:text="${allUser.roles}"/>
             <td>
-                <a th:href="@{/edit?id={id}(id=${allUser.getId()})}" th:text="Обновить">Обновить</a> <a th:href="@{/delite?id={id}(id=${allUser.getId()})}" th:text="Удалить">Удалить</a>
+                <a th:href="@{/edit?id={id}(id=${allUser.getId()})}" th:text="Обновить">Обновить</a> <a th:href="@{/admin/delite?id={id}(id=${allUser.getId()})}" th:text="Удалить">Удалить</a>
             </td>
         </tr>
         </tbody>

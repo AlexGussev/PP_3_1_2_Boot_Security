@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserController {
 
     @GetMapping("/user")
-    public String getUserView(Model model) {
-        model.
+    public String getUserView() {
         return "/user/user-view";
     }
 }
