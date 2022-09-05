@@ -7,7 +7,7 @@
 <body>
 <h2>Пользователь</h2>
 <br>
-<form th:method="POST" th:action="@{/admin/save}" th:object="${user}">
+<form th:method="POST" th:action="@{/user/save}" th:object="${user}">
     <label for="id">ID</label>
     <input type="text" th:field="*{id}" id="id" readonly/>
     <br/>
@@ -34,15 +34,6 @@
     <br/>
     <label for="password">Пароль</label>
     <input type="text" th:field="*{password}" id="password"/>
-    <br/>
-    <br/>
-    <br/>
-    <br>
-    <label for="roles">Roles:</label>
-           <input id="roles" type="checkbox" name="allRoles"
-                th:each="role : ${allRoles}"
-                th:text="${role.name}"
-                th:value="${role.name}"/>
     <br>
     <input type="submit" value="Сохранить"/>
 </form>

@@ -18,10 +18,6 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
     private final UserRepository userRepository;
-    @Bean
-    public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -29,11 +25,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     @Transactional
     public void saveUser(User user) {
-        if (user.getId() == 0) {
-            user.setPassword(encoder().encode();
             userRepository.save(user);
-        }
-
     }
     @Override
     @Transactional

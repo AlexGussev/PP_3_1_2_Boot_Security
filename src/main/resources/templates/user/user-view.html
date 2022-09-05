@@ -7,23 +7,31 @@
 <body>
 <h2>All Users</h2>
 <br>
-
-<table cellspacing="10" cellpadding="5" border="1">
+<table>
     <tr>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Age</th>
-        <th>Operations</th>
+        <th>Возвраст</th>
+        <th>Email</th>
+        <th>Фамиллия</th>
+        <th>Имя</th>
+        <th>Логин</th>
+        <th>Пароль</th>
     </tr>
     <tr th:each="user : ${users}">
-
-        <td th:utext="${user.firstName}"></td>
-        <td th:utext="${user.lastName}"></td>
         <td th:utext="${user.age}"></td>
-        <td> <a th:href="@{/edit?id={id}(id=${user.getId()})}" th:text="Edit">Edit</a><a th:href="@{/delete?id={id}(id=${user.getId()})}" th:text="Delete">Delete</a></td>
+        <td th:utext="${user.email}"></td>
+        <td th:utext="${user.lastName}"></td>
+        <td th:utext="${user.name}"></td>
+        <td th:utext="${user.username}"></td>
+        <td th:utext="${user.password}"></td>
+        <td>
+            <a th:href="@{/user/update?id={id}(id=${user.getId()})}" th:text="Обновить">Обновить</a> <a th:href="@{/user/delite?id={id}(id=${user.getId()})}" th:text="Удалить">Удалить учетную запись</a>
+        </td>
     </tr>
 </table>
 <br>
-<input type="button" value="Add new User" onclick="window.location.href='/add'"/>
+<br>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Выйти</button>
+</form>
 </body>
 </html>
