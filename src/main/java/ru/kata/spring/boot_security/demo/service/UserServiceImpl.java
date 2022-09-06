@@ -16,7 +16,7 @@ import ru.kata.spring.boot_security.demo.repository.UserRepository;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -43,13 +43,4 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.findAll();
     }
 
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User is not found");
-        }
-        return user;
-    }
 }

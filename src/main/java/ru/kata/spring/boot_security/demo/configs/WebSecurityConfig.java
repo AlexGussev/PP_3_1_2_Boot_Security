@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import ru.kata.spring.boot_security.demo.service.UserDetailsServiceImpl;
 import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 
 @Configuration
@@ -21,11 +22,11 @@ import ru.kata.spring.boot_security.demo.service.UserServiceImpl;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
 
-    private final UserServiceImpl userService;
+    private final UserDetailsServiceImpl userDetailsServiceImpl;
     @Autowired
-    public WebSecurityConfig(SuccessUserHandler successUserHandler, UserServiceImpl userService) {
+    public WebSecurityConfig(SuccessUserHandler successUserHandler, UserDetailsServiceImpl userDetailsServiceImpl) {
         this.successUserHandler = successUserHandler;
-        this.userService = userService;
+        this.userDetailsServiceImpl = userDetailsServiceImpl;
     }
 
     @Bean
@@ -50,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(encoder());
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(encoder());
     }
 
 }
